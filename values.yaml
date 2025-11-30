@@ -1,0 +1,37 @@
+image:
+  repository: clickhouse/clickhouse-server
+  tag: "24.3"
+  pullPolicy: IfNotPresent
+
+resources: {}
+
+storage:
+  size: 10Gi
+
+# Rendered into users.xml (passwords go to userCredentials)
+users:
+  - name: app
+    profile: default
+    quota: default
+    networks:
+      - "::/0"
+  - name: readonly
+    profile: readonly
+    quota: default
+    networks:
+      - "::/0"
+
+userCredentials: {}
+#  app: "app_password"
+#  readonly: "readonly_password"
+
+
+# Optional custom profiles rendered into users.d/profiles.xml when enabled
+profiles:
+  enabled: false
+  items: []
+  #  items:
+  #    - name: analytics
+  #      settings:
+  #        max_memory_usage: 4000000000
+  #        max_concurrent_queries_for_user: 4
