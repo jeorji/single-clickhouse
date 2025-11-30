@@ -9,6 +9,7 @@ helm upgrade --install clickhouse ./single-clickhouse \
 Минимальный Helm-чарт, который разворачивает одиночный ClickHouse:
 
 - `StatefulSet` с 1 репликой, PVC для данных и `users.xml`/`profiles.xml` монтированными в `/etc/clickhouse-server/users.d`.
+- Возможность указать желаемую версию ClickHouse через параметр `image.tag` в `values.yaml`.
 - Пользователи описываются (профили/квоты/сети) в `values.yaml`, а пароли выносятся в отдельный файл (`values-secret.yaml`).
 
 ## Требования к кластеру
