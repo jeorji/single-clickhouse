@@ -1,5 +1,11 @@
 # single-clickhouse
 
+```bash
+helm upgrade --install clickhouse ./single-clickhouse \
+  -f single-clickhouse/values.yaml \
+  -f single-clickhouse/values-secret.yaml
+```
+
 Минимальный Helm-чарт, который разворачивает одиночный ClickHouse:
 
 - `StatefulSet` с 1 репликой, PVC для данных и `users.xml`/`profiles.xml` монтированными в `/etc/clickhouse-server/users.d`.
@@ -30,15 +36,7 @@
    ```
    После этого пользователю можно назначить `profile: analytics`.
 
-## Деплой и обновления
-
-```bash
-helm upgrade --install clickhouse ./clickhouse \
-  -f clickhouse/values.yaml \
-  -f clickhouse/values-secret.yaml
-```
-
-## Проверка работоспособности
+## Проверка
 
 1. Убедиться, что Pod поднялся: `kubectl get pods -l app=clickhouse`.
 2. Пробросить порт и выполнить HTTP-запрос:
